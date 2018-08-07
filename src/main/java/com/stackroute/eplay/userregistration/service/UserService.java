@@ -17,8 +17,4 @@ public interface UserService {
 
 	public boolean deleteUser(String username);
 
-	// public List<Movie> getMovieByTitle(String title);
-
-	//public void userExists
-
 }

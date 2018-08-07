@@ -36,7 +36,7 @@ public class UserController {
 	//private String mongo;
 
 	@PostMapping("/user")
-	public ResponseEntity<?> saveMovie(@RequestBody User user) {
+	public ResponseEntity<?> saveUser(@RequestBody User user) {
 		try {
 			return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.CREATED);
 		} catch (UserAlreadyExistsException e) {
@@ -50,7 +50,7 @@ public class UserController {
 	}
 
 	@GetMapping("/user/{username}")
-	public ResponseEntity<?> getUserById(@PathVariable String username) {
+	public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
 		return new ResponseEntity<Optional<User>>(userService.getUserByUsername(username), HttpStatus.OK);
 	}
 

@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +37,11 @@ public class UserServiceImplTest {
 		MockitoAnnotations.initMocks(this);
 		user = new User("garvit88", "pass", "Garvit Garg", "12345", "email@gmail.com", "male", "blr");
 		users = new ArrayList<User>();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+
 	}
 
 	@Test
