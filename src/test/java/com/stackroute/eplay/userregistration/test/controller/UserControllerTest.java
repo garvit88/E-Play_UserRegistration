@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
@@ -53,6 +52,10 @@ public class UserControllerTest {
 	public void tearDown() throws Exception {
 
 	}
+	
+	/*
+	 * Testing save user controller method
+	 */
 
 	@Test
 	public void testSaveUser() throws Exception {
@@ -60,15 +63,10 @@ public class UserControllerTest {
 		mockMvc.perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(asJsonString(user)))
 				.andExpect(status().isCreated());
 	}
-
-	// @Test
-	// public void testCreateNoteFailure() throws Exception {
-	// when(any()).thenReturn(UserAlreadyExistsException.class);
-	//
-	// mockMvc.perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(asJsonString(user)))
-	// .andExpect(status().isConflict()).andDo(print());
-	//
-	// }
+	
+	/*
+	 * Testing get all user controller method
+	 */
 
 	@Test
 	public void testGetAllUsers() throws Exception {
@@ -80,6 +78,10 @@ public class UserControllerTest {
 		when(userService.getAllUsers()).thenReturn(users);
 		mockMvc.perform(get("/api/v1/users")).andExpect(status().isOk());
 	}
+	
+	/*
+	 * Testing update user controller method
+	 */
 
 	@Test
 	public void testUpdateUser() throws Exception {
@@ -88,6 +90,10 @@ public class UserControllerTest {
 		mockMvc.perform(put("/api/v1/user/{username}", user.getUsername()).contentType(MediaType.APPLICATION_JSON)
 				.content(asJsonString(user))).andExpect(status().isOk());
 	}
+	
+	/*
+	 * Testing get user by username controller method
+	 */
 
 	@Test
 	public void testGetUserByUsername() throws Exception {
@@ -95,6 +101,10 @@ public class UserControllerTest {
 		when(userService.getUserByUsername(user.getUsername())).thenReturn(userOp);
 		mockMvc.perform(get("/api/v1/user/{username}", user.getUsername())).andExpect(status().isOk());
 	}
+	
+	/*
+	 * Testing delete user controller method
+	 */
 	
 	@Test
 	public void testDeleteUser() throws Exception {

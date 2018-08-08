@@ -44,19 +44,20 @@ public class UserServiceImplTest {
 
 	}
 
+	/*
+	 * Testing saveuser() method
+	 */
+	
 	@Test
 	public void testSaveUser() throws Exception {
 		when(userRepository.save(user)).thenReturn(user);
 		assertEquals(user, userServiceImpl.saveUser(user));
 	}
 
-	// @Test(expected = UserAlreadyExistsException.class)
-	// public void testCreateUserFailure() {
-	// when(userRepository.save(user)).thenReturn(user);
-	// when(userRepository.save(user)).thenThrow(UserAlreadyExistsException.class);
-	//
-	// }
-
+	/*
+	 *	testing getAllUsers() method 
+	 */
+	
 	@Test
 	public void testGetAllUsers() {
 
@@ -75,6 +76,10 @@ public class UserServiceImplTest {
 		assertEquals(3, actualUsers.size());
 		assertEquals("garvit8", actualUsers.get(2).getUsername());
 	}
+	
+	/*
+	 *	testing getGetByUsername() method 
+	 */
 
 	@Test
 	public void testGetUserByUsername() throws Exception {
@@ -82,6 +87,10 @@ public class UserServiceImplTest {
 		when(userRepository.findById("garvit88")).thenReturn(userOp);
 		assertEquals(userOp, userServiceImpl.getUserByUsername("garvit88"));
 	}
+	
+	/*
+	 *	testing getUpdateUser() method 
+	 */
 
 	@Test
 	public void testUpdateUser() throws Exception {
@@ -89,6 +98,11 @@ public class UserServiceImplTest {
 		User actual = userServiceImpl.updateUser(user, user.getUsername());
 		assertEquals(user, actual);
 	}
+	
+	/*
+	 *	testing getDeleteUser() method 
+	 */
+	
 
 	@Test
 	public void testDeleteUser() throws Exception {
@@ -96,14 +110,5 @@ public class UserServiceImplTest {
 		boolean status = userServiceImpl.deleteUser(user.getUsername());
 		assertEquals(true, status);
 	}
-
-	//
-	// @Test
-	// public void testGetAllUser() throws Exception {
-	// when(userRepository.save(user)).thenReturn(user);
-	// User actual = userServiceImpl.updateUser(user, user.getUsername());
-	// assertEquals(user, actual);
-	// }
-	//
 
 }

@@ -3,7 +3,11 @@ package com.stackroute.eplay.userregistration.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+/*
+ * This is a model class for the User Registration
+ */
+
+@Document 
 public class User {
 	@Id
 	private String username;
